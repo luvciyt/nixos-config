@@ -18,6 +18,10 @@ in
     stateVersion = "25.05";
 
     packages = with pkgs; [
+      whitesur-icon-theme
+      whitesur-cursors
+      WhiteSurGtkTheme
+
       # cpp libs
       eigen
 
@@ -39,7 +43,7 @@ in
 
       nerd-fonts.jetbrains-mono
       jetbrains-mono
-
+      
       jetbrains.clion
 
       # proxy
@@ -61,10 +65,6 @@ in
       gnomeExtensions.system-monitor
       gnomeExtensions.docker
       gnomeExtensions.kimpanel
-
-      whitesur-icon-theme
-      whitesur-cursors
-      WhiteSurGtkTheme
     ];
 
     sessionVariables = {
@@ -92,7 +92,7 @@ in
       size = 11;
     };
   };
-
+  programs.gnome-shell.theme.name = "WhiteSur-Dark-solid-red";
   dconf.enable = true;
 
   dconf.settings = {
