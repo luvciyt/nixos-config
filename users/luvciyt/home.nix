@@ -1,16 +1,6 @@
 # users/luvciyt/home.nix
 { lib, pkgs, ... }:
 
-let
-  WhiteSurGtkTheme = pkgs.whitesur-gtk-theme.override {
-    colorVariants = [ "dark" ];
-    opacityVariants = [ "solid" ];
-    themeVariants = [ "red" ];
-    iconVariant = "apple";
-    nautilusStyle = "glassy";
-    roundedMaxWindow = true;
-  };
-in
 {
   home = {
     username = "luvciyt";
@@ -20,7 +10,6 @@ in
     packages = with pkgs; [
       whitesur-icon-theme
       whitesur-cursors
-      WhiteSurGtkTheme
 
       # cpp libs
       eigen
@@ -43,7 +32,7 @@ in
 
       nerd-fonts.jetbrains-mono
       jetbrains-mono
-      
+
       jetbrains.clion
 
       # proxy
@@ -53,6 +42,15 @@ in
       google-chrome
 
       qq
+
+      pkgs.sassc
+      pkgs.glib.dev
+      pkgs.glib.bin
+      pkgs.libxml2
+      pkgs.imagemagick
+      pkgs.dialog
+      pkgs.optipng
+      pkgs.inkscape
 
       gnome-tweaks
       dconf
@@ -76,8 +74,7 @@ in
   gtk = {
     enable = true;
     theme = {
-      name = "WhiteSur-Dark-solid-red";
-      package = WhiteSurGtkTheme;
+      name = "WhiteSur-Dark-red";
     };
     iconTheme = {
       name = "WhiteSur";
@@ -92,7 +89,7 @@ in
       size = 11;
     };
   };
-  programs.gnome-shell.theme.name = "WhiteSur-Dark-solid-red";
+  programs.gnome-shell.theme.name = "WhiteSur-Dark-red";
   dconf.enable = true;
 
   dconf.settings = {
@@ -116,11 +113,11 @@ in
     };
 
     "org/gnome/shell/extensions/user-theme" = {
-      name = "WhiteSur-Dark-solid-red";
+      name = "WhiteSur-Dark-red";
     };
 
     "org/gnome/desktop/wm/preferences" = {
-      theme = "WhiteSur-Dark-solid-red";
+      theme = "WhiteSur-Dark-red";
       titlebar-font = "PingFang SC Bold 11";
     };
 
@@ -141,6 +138,7 @@ in
   };
 
   xdg.configFile."nvim".source = ./nvim;
+  home.file.".themes".source = ./themes;
 
   programs = {
     git = {
@@ -342,20 +340,20 @@ in
 
       plugins = with pkgs.vimPlugins; [
         plenary-nvim
-        nvim-web-devicons 
+        nvim-web-devicons
 
-        tokyonight-nvim 
-        lualine-nvim 
-        bufferline-nvim 
+        tokyonight-nvim
+        lualine-nvim
+        bufferline-nvim
 
-        nvim-tree-lua 
-        telescope-nvim 
-        vim-tmux-navigator 
+        nvim-tree-lua
+        telescope-nvim
+        vim-tmux-navigator
         (nvim-treesitter.withAllGrammars)
         rainbow-delimiters-nvim
         comment-nvim
-        nvim-autopairs 
-        gitsigns-nvim 
+        nvim-autopairs
+        gitsigns-nvim
 
         mason-nvim
         mason-lspconfig-nvim
@@ -363,7 +361,7 @@ in
 
         nvim-cmp
         cmp-nvim-lsp
-        cmp-path 
+        cmp-path
         cmp-buffer
 
         luasnip
