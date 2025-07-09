@@ -32,6 +32,7 @@
   modules.desktop = {
     enable = true;
     gnome.enable = true;
+    # i3.enable = true;
   };
 
   modules.development = {
