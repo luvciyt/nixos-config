@@ -74,8 +74,19 @@
     options = "--delete-old";
   };
 
+  virtualisation.docker.enable = true;
+
   nix.settings.min-free = 1073741824;
-  
+
+  networking.nameservers = [
+    "8.8.8.8"
+    "8.8.4.4"
+    "1.1.1.1"
+    "1.0.0.1"
+    "202.114.0.131"
+    "202.114.0.242"
+  ];
+
   nix.settings.substituters = [
     "https://mirrors.ustc.edu.cn/nix-channels/store"
     "https://cache.nixos.org"
@@ -85,4 +96,16 @@
     "nix-command"
     "flakes"
   ];
+
+  environment.systemPackages = with pkgs; [
+    openssl
+    pkg-config
+  ];
+
+  environment.sessionVariables = {
+    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+    OPENSSL_DIR = "${pkgs.openssl.out}";
+    OPENSSL_LIB_DIR = "${pkgs.openssl.out}/lib";
+    OPENSSL_INCLUDE_DIR = "${pkgs.openssl.dev}/include";
+  };
 }

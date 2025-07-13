@@ -14,9 +14,18 @@
       # cpp libs
       eigen
 
+      docker 
+      docker-compose
+
+      wemeet
+
       gcc
       gdb
       clang-tools
+
+      flex
+      bison
+      bc
 
       ninja
       gnumake
@@ -34,7 +43,7 @@
       jetbrains-mono
 
       jetbrains.clion
-
+      jetbrains.rust-rover
       # proxy
       flclash
 

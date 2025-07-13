@@ -18,6 +18,7 @@
       "optical"
       "scanner"
       "lp"
+      "docker"
     ];
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;

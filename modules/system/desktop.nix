@@ -57,7 +57,7 @@ in {
     services.libinput.enable = true;
 
     # Display managers
-    services.xserver.displayManager.gdm = mkIf cfg.gnome.enable {
+    services.displayManager.gdm = mkIf cfg.gnome.enable {
       enable = true;
       wayland = cfg.enableWayland;
     };
@@ -69,7 +69,7 @@ in {
     ) true;
 
     # Desktop environments and window managers
-    services.xserver.desktopManager.gnome.enable = mkIf cfg.gnome.enable true;
+    services.desktopManager.gnome.enable = mkIf cfg.gnome.enable true;
     services.xserver.desktopManager.plasma5.enable = mkIf cfg.kde.enable true;
     services.xserver.windowManager.i3.enable = mkIf cfg.i3.enable true;
 
